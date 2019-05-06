@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import Merchant from "./pages/Merchant";
 
 import "./App.css";
+
 function App() {
   return (
     <Router>
