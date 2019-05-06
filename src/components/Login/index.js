@@ -24,23 +24,23 @@ class Login extends Component {
   rememberchecked = () => {
     this.setState({
       checked: !this.state.checked
-    });
-  };
+    })
+  }
 
   axiosPosty = () => {
-    axios
-      .post("localhost:3030/api", {
-        username: this.state.username,
-        password: this.state.password
-        // checked: this.state.checked,
-      })
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
+
+    axios.post("localhost:3030/api", {
+      username: this.state.username,
+      password: this.state.password,
+      // checked: this.state.checked,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   render() {
     return (
@@ -93,12 +93,10 @@ class Login extends Component {
                   />
                 </div>
                 <div className="row align-items-center remember remembercheck">
-                  <input
-                    type="checkbox"
+                  <input type="checkbox"
                     name="checkbox"
                     value={this.state.checkbox}
-                    onChange={this.rememberchecked}
-                  />
+                    onChange={this.rememberchecked} />
                   Remember Me
                 </div>
                 <div className="form-group">
@@ -106,10 +104,9 @@ class Login extends Component {
                     type="submit"
                     value="Login"
                     className="btn float-right login_btn"
-                    onClick={this.axiosPosty}
-                  >
+                    onClick={this.axiosPosty}>
                     Submit
-                  </button>
+                    </button>
                 </div>
               </form>
             </div>

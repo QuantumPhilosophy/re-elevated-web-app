@@ -1,31 +1,37 @@
 import React from "react";
 import "./style.css";
-function Review({ handleReviewInput, handleReviewSubmit, inputVal }) {
+
+function Review({ q, handleInputChange, handleFormSubmit }) {
   return (
-    <div className="box-container">
-      <div className="input-group m-3">
+    <div className="search-wrap">
+      <div className="input-group mb-3">
         <input
-          className="form-control inputBox"
-          id=""
+          className="form-control"
+          id="Title"
           type="text"
-          value={inputVal}
-          onChange={handleReviewInput}
-          placeholder="Write a comment..."
-        />
-      </div>
-      <div className="input-group-append">
-        <button
-          onClick={handleReviewSubmit}
-          type="submit"
-          className="btn btn-outline-secondary"
+          value={q}
+          placeholder="Search Here"
+          name="q"
+          onChange={handleInputChange}
+          required
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
-        >
-          Comment
-          <i className="fas fa-cannabis" />
-        </button>
+        />
+        <div className="input-group-append">
+          <button
+            onClick={handleFormSubmit}
+            type="submit"
+            className="btn btn-outline-secondary"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          >
+            Search
+            <i className="fas fa-cannabis" />
+          </button>
+        </div>
       </div>
     </div>
   );
 }
+
 export default Review;
