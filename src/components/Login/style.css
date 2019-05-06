@@ -1,5 +1,3 @@
-/* Made with love by Mutiullah Samim*/
-
 @import url("https://fonts.googleapis.com/css?family=Numans");
 
 html,
@@ -21,7 +19,7 @@ body {
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(255, 254, 254, 0.5) !important;
 }
 
 .social_icon span {
@@ -49,7 +47,7 @@ body {
   width: 30px;
   height: 30px;
   background-color: #ffc312;
-  color: #1a1917;
+  color: #cac5bb;
   border: 0 !important;
   margin: auto;
 }
