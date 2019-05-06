@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Review from "../ReviewBox";
+import Review from "../SearchBox";
 import "./style.css";
 
 class Nav extends Component {
@@ -100,6 +100,32 @@ class Nav extends Component {
                 to="/wishlist"
               >
                 Wishlist
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
+                className={
+                  window.location.pathname === "/merchant"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+                to="/merchant"
+              >
+                Merchant
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
+                className={
+                  window.location.pathname === "/signup"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+                to="/signup"
+              >
+                Sign Up
               </Link>
             </li>
           </ul>
