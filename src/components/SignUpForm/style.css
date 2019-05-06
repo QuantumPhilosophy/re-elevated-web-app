@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css?family=Numans");
+
+html,
+body {
+  background-image: url("http://static1.squarespace.com/static/58a487863e00be228444a0de/58a49a8c9de4bb115e65e2b9/58c84c1c59cc68abee760a8b/1490277641120/organic.jpg?format=1500w");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Numans", sans-serif;
+}
+
+.container {
+  height: 100%;
+  align-content: center;
+}
+
+.card {
+  height: 450px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 10px;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.social_icon span {
+  font-size: 60px;
+  margin-left: 10px;
+  color: #ffc312;
+}
+
+.social_icon span:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.card-header h3 {
+  color: white;
+}
+
+.social_icon {
+  position: absolute;
+  right: -10px;
+  top: -45px;
+}
+
+.input-group-prepend span {
+  width: 30px;
+  height: 30px;
+  background-color: #ffc312;
+  color: #fffdfa;
+  border: 0 !important;
+  margin: auto;
+}
+
+input:focus {
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+  color: #ffc312;
+}
+.form-control {
+  color: #ffc312;
+}
+.remember {
+  color: rgb(204, 236, 17);
+}
+input.form-control {
+  color: #ffc312;
+}
+::-webkit-input-placeholder {
+  color: peachpuff;
+}
+::-moz-placeholder {
+  color: peachpuff;
+}
+:-ms-input-placeholder {
+  color: peachpuff;
+}
+
+.remember input {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.login_btn {
+  color: black;
+  background-color: #ffc312;
+  width: 100px;
+}
+
+.login_btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.links {
+  color: white;
+}
+
+.links a {
+  margin-left: 4px;
+}
