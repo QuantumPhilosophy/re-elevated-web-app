@@ -7,12 +7,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^4.3.1",
-<<<<<<< HEAD
     "react-scripts": "3.0.0",
     "axios": "^0.18.0"
-=======
-    "react-scripts": "3.0.0"
->>>>>>> fbe884246433bbaf79a1feb60df8dc88c5373e0e
   },
   "scripts": {
     "start": "react-scripts start",
