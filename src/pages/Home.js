@@ -21,6 +21,7 @@ class Home extends Component {
       [name]: value
     });
   };
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -35,6 +36,13 @@ class Home extends Component {
     event.preventDefault();
     alert("submitted");
   };
+
+  getApiUser = () => {
+    console.log("Got Users");
+    API.getUsers().then(function (results) {
+      console.log(JSON.stringify(results.data));
+    });
+  }
 
   handleStrainSave = id => {
     const strain = this.state.strains.find(strain => strain.id === id);
@@ -55,6 +63,10 @@ class Home extends Component {
   };
   render() {
     return (
+      <div>
+      <div>
+        <button onClick={() => this.getApiUser()}>Test Button</button>
+      </div>
       <div>
         <SearchBox
           handleInputChange={this.handleInputChange}
@@ -104,8 +116,9 @@ class Home extends Component {
                 )}
               </Card>
             </Col>
-          </Row>
+          </Row> 
         </Container>
+      </div>
       </div>
     );
   }
