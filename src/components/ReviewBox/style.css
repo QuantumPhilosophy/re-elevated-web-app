@@ -1,7 +1,6 @@
-.search-wrap {
-  width: 80%;
-  margin: auto;
-}
-.fa-cannabis {
-  margin-left: 10px;
+input.form-control.inputBox {
+  height: 100px;
+  width: 50px;
+  border: 2px;
+  border-radius: 5px;
 }

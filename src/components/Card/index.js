@@ -3,7 +3,7 @@ import React from "react";
 function Card({ title, children }) {
   return (
     <div className="card mt-4">
-      <div className="card-header">
+      <div calssName="card-header">
         <h3>
           <strong>
             <i className="fas fa-cannabis" aria-hidden="true" />
