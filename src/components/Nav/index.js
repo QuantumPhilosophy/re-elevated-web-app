@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Review from "../SearchBox";
+import Review from "../ReviewBox";
 import "./style.css";
 
 class Nav extends Component {

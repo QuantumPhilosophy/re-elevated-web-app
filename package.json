@@ -7,8 +7,12 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^4.3.1",
+<<<<<<< HEAD
     "react-scripts": "3.0.0",
     "axios": "^0.18.0"
+=======
+    "react-scripts": "3.0.0"
+>>>>>>> fbe884246433bbaf79a1feb60df8dc88c5373e0e
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,5 +34,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuantumPhilosophy/re-elevated-web-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/QuantumPhilosophy/re-elevated-web-app/issues"
+  },
+  "homepage": "https://github.com/QuantumPhilosophy/re-elevated-web-app#readme"
 }
