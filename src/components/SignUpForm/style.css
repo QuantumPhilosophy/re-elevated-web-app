@@ -102,3 +102,6 @@ input.form-control {
 .links a {
   margin-left: 4px;
 }
+select {
+  width: 100%;
+}

@@ -80,26 +80,13 @@ class Nav extends Component {
               <Link
                 onClick={this.toggleNav}
                 className={
-                  window.location.pathname === "/tried"
+                  window.location.pathname === "/reviews"
                     ? "nav-link active"
                     : "nav-link"
                 }
-                to="/tried"
+                to="/reviews"
               >
-                Tried
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                onClick={this.toggleNav}
-                className={
-                  window.location.pathname === "/wishlist"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
-                to="/wishlist"
-              >
-                Wishlist
+                Reviews
               </Link>
             </li>
             <li className="nav-item">
