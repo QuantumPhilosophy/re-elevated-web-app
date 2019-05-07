@@ -35,7 +35,6 @@ class SignUp extends Component {
         console.log(error);
       });
   };
-
   constructor(props) {
     super(props);
     this.state = { value: "" };
