@@ -49,8 +49,21 @@ class SignUp extends Component {
   }
 
   handleSubmit(event) {
-    alert("You register as a: " + this.state.value);
     event.preventDefault();
+    API.createNewUser({
+      name: this.state.name,
+      password: this.state.password,
+      email: this.state.email,
+      address: this.state.address,
+      account_type: this.state.value
+    })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    console.log("You register as a: " + this.state.value);
   }
   render() {
     return (
