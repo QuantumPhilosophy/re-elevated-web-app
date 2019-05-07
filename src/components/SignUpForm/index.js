@@ -2,8 +2,40 @@ import React, { Component } from "react";
 import Card from "../Card";
 import { Link } from "react-router-dom";
 import "./style.css";
+import axios from "axios";
+import API from "../../utils/API";
 
 class SignUp extends Component {
+  state = {
+    name: "",
+    password: "",
+    address: "",
+    email: ""
+  };
+  handleInputChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  };
+
+  axiosPost = () => {
+    API.createNewUser({
+      name: this.state.name,
+      password: this.state.password,
+      email: this.state.email,
+      address: this.state.address,
+      account_type: this.state.value
+    })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
   constructor(props) {
     super(props);
     this.state = { value: "" };
@@ -45,8 +77,11 @@ class SignUp extends Component {
                       <div className="input-group-prepend" />
                       <input
                         type="text"
+                        name="name"
                         className="form-control"
                         placeholder="Name"
+                        value={this.state.name}
+                        onChange={this.handleInputChange}
                       />
                     </div>
 
@@ -54,24 +89,33 @@ class SignUp extends Component {
                       <div className="input-group-prepend" />
                       <input
                         type="text"
+                        name="address"
                         className="form-control"
                         placeholder="Address"
+                        value={this.state.address}
+                        onChange={this.handleInputChange}
                       />
                     </div>
                     <div className="input-group form-group">
                       <div className="input-group-prepend" />
                       <input
                         type="email"
+                        name="email"
                         className="form-control"
                         placeholder="Email"
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
                       />
                     </div>
                     <div className="input-group form-group">
                       <div className="input-group-prepend" />
                       <input
                         type="password"
+                        name="password"
                         className="form-control"
                         placeholder="Password"
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
                       />
                     </div>
 
