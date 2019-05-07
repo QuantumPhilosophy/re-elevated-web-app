@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:3030"
+const url = "http://localhost:3030";
 
 export default {
   getUsers: function() {

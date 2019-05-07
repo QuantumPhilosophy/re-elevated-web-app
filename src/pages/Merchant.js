@@ -1,5 +1,5 @@
 import Review from "../components/ReviewBox";
-
+import { Link } from "react-router-dom";
 import React, { Component } from "react";
 
 class Merchant extends Component {
@@ -25,6 +25,19 @@ class Merchant extends Component {
           handleReviewSubmit={this.handleReviewSubmit}
           inputVal={this.state.inputVal}
         />
+        <div className="navbari" id="navbarNav">
+          <ul className="navi">
+            <li className="li-item">
+              <Link to="/">wishlist/Tried</Link>
+            </li>
+            <li className="li-item">
+              <Link to="/">Reviews</Link>
+            </li>
+            <li className="li-item">
+              <Link to="/">Search</Link>
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }

@@ -65,7 +65,7 @@ class Login extends Component {
                 <div className="input-group form-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text">
-                      <i className="fas fa-user" />
+                      <i className="fas fa-user fa-lg" />
                     </span>
                   </div>
                   <input
@@ -80,7 +80,7 @@ class Login extends Component {
                 <div className="input-group form-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text">
-                      <i className="fas fa-key" />
+                      <i className="fas fa-key fa-lg" />
                     </span>
                   </div>
                   <input
