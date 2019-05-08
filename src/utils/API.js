@@ -13,6 +13,11 @@ export default {
       password: userObj.password,
       address: userObj.address
     });
+  },
+
+  loginUser: userObj => {
+    console.log("loginUser", userObj);
+    return axios.post(`${url}/auth/${userObj.account_type}/login`, userObj);
   }
   // getSavedBooks: function() {
   //   return axios.get(url + "/api/strains");

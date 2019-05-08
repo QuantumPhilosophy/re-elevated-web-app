@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Card from "../Card";
 import "./style.css";
 import axios from "axios";
+import API from "../../utils/API";
 
 class Login extends Component {
   state = {
     username: "",
     password: "",
-    checked: false
+    checked: false,
+    account_type: ""
   };
 
   // handle any changes to the input fields
@@ -28,12 +30,11 @@ class Login extends Component {
   };
 
   axiosPosty = () => {
-    axios
-      .post("localhost:3030/api", {
-        username: this.state.username,
-        password: this.state.password
-        // checked: this.state.checked,
-      })
+    API.loginUser({
+      username: this.state.username,
+      password: this.state.password,
+      account_type: this.state.account_type
+    })
       .then(function(response) {
         console.log(response);
       })
@@ -41,7 +42,36 @@ class Login extends Component {
         console.log(error);
       });
   };
+  constructor(props) {
+    super(props);
+    this.state = { account_type: "" };
 
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInputChange(event) {
+    this.setState({ value: event.target.account_type });
+  }
+  handleChange(event) {
+    this.setState({ account_type: event.target.account_type });
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    API.login({
+      password: this.state.password,
+      username: this.state.username,
+      account_type: this.state.account_type
+    })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    console.log("You register as a: " + this.state.account_type);
+  }
   render() {
     return (
       <div className="container">
@@ -61,7 +91,19 @@ class Login extends Component {
                   </span>
                 </div>
               </div>
-              <form>
+              <form onSubmit={this.handleSubmit}>
+                <div>
+                  <select
+                    value={this.state.account_type}
+                    onChange={this.handleChange}
+                    placeholder="You Are A"
+                  >
+                    <option value="">Register as a...</option>
+                    <option value="merchant">Merchant</option>
+                    <option value="grower">Grower</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                </div>
                 <div className="input-group form-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text">
@@ -71,7 +113,7 @@ class Login extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="username"
+                    placeholder="Username"
                     name="username"
                     value={this.state.username}
                     onChange={this.handleInputChange}
