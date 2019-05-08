@@ -6,6 +6,13 @@ export default {
   getUsers: function() {
     return axios.get(url + "/users");
   },
+  getGrowers: function() {
+    return axios.get(url + "/grower");
+  },
+  getMerchant: function() {
+    return axios.get(url + "/merchants");
+  },
+
   createNewUser: userObj => {
     return axios.post(`${url}/auth/${userObj.account_type}/signup`, {
       name: userObj.name,
@@ -19,6 +26,7 @@ export default {
     console.log("loginUser", userObj);
     return axios.post(`${url}/auth/${userObj.account_type}/login`, userObj);
   }
+
   // getSavedBooks: function() {
   //   return axios.get(url + "/api/strains");
   // },

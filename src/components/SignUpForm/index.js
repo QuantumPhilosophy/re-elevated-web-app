@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Card from "../Card";
 import { Link } from "react-router-dom";
 import "./style.css";
-import axios from "axios";
+// import axios from "axios";
 import API from "../../utils/API";
 
 class SignUp extends Component {
@@ -29,7 +29,7 @@ class SignUp extends Component {
       account_type: this.state.value
     })
       .then(function(response) {
-        console.log(response);
+        console.log("this is response", response);
       })
       .catch(function(error) {
         console.log(error);

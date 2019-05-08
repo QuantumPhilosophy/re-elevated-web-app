@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "../Card";
 import "./style.css";
-import axios from "axios";
+// import axios from "axios";
 import API from "../../utils/API";
 
 class Login extends Component {
