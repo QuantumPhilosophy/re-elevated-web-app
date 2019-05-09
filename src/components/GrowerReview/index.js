@@ -1,10 +1,6 @@
 import React from "react";
 import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
-<<<<<<< HEAD
-import "./style.css";
-=======
->>>>>>> 88a9495718a8644d4b97806164278ff2672e6fe3
 
 function GrowerReview({
   user_name,
