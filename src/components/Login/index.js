@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import Card from "../Card";
 import "./style.css";
+<<<<<<< HEAD
 // import axios from "axios";
+=======
+>>>>>>> ab532a11feb84a46f0e99ef404be536d4d22ff4b
 import API from "../../utils/API";
 
 class Login extends Component {
   state = {
     username: "",
     password: "",
+<<<<<<< HEAD
     checked: false,
     account_type: ""
+=======
+    type: "user",
+    checked: false
+>>>>>>> ab532a11feb84a46f0e99ef404be536d4d22ff4b
   };
 
   // handle any changes to the input fields
@@ -29,17 +37,28 @@ class Login extends Component {
     });
   };
 
+<<<<<<< HEAD
   axiosPosty = () => {
     API.loginUser({
       username: this.state.username,
       password: this.state.password,
       account_type: this.state.account_type
+=======
+  submitResponse = event => {
+    event.preventDefault();
+    console.log("You pressed SubmitBTN");
+    API.login({
+      username: this.state.username,
+      password: this.state.password,
+      type: this.state.type
+>>>>>>> ab532a11feb84a46f0e99ef404be536d4d22ff4b
     })
       .then(function(response) {
-        console.log(response);
+        // here is where you would redirect after successful login
+        console.log("Working",response);
       })
       .catch(function(error) {
-        console.log(error);
+        console.log("NOT WORKING",error);
       });
   };
   constructor(props) {
@@ -148,7 +167,7 @@ class Login extends Component {
                     type="submit"
                     value="Login"
                     className="btn float-right login_btn"
-                    onClick={this.axiosPosty}
+                    onClick={this.submitResponse}
                   >
                     Submit
                   </button>

@@ -29,9 +29,14 @@ export default {
     return axios.get(`${url}/merchantreviews/{merchant_id}`, custyReview);
   },
   // one route for all login
-  loginUser: userObj => {
-    console.log("loginUser", userObj);
-    return axios.post(`${url}/auth/login`, userObj);
+
+  login: user => {
+    console.log("API.js login call triggered");
+    return axios.post(`${url}/auth/login`, {
+      username: user.username,
+      password: user.password,
+      type: user.type
+    });
   }
 
   // getSavedBooks: function() {
