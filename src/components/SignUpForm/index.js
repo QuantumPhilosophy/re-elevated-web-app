@@ -179,7 +179,6 @@ class SignUp extends Component {
                         value="Submit"
                         className="btn float-right login_btn m-1"
                       />
-
                       <Link
                         type="button"
                         value="Login"
