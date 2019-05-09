@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Card from "../Card";
 import "./style.css";
-import axios from "axios";
+import API from "../../utils/API";
 
 class Login extends Component {
   state = {
     username: "",
     password: "",
+    type: "user",
     checked: false
   };
 
@@ -27,18 +28,20 @@ class Login extends Component {
     });
   };
 
-  axiosPosty = () => {
-    axios
-      .post("localhost:3030/api", {
-        username: this.state.username,
-        password: this.state.password
-        // checked: this.state.checked,
-      })
+  submitResponse = event => {
+    event.preventDefault();
+    console.log("You pressed SubmitBTN");
+    API.login({
+      username: this.state.username,
+      password: this.state.password,
+      type: this.state.type
+    })
       .then(function(response) {
-        console.log(response);
+        // here is where you would redirect after successful login
+        console.log("Working",response);
       })
       .catch(function(error) {
-        console.log(error);
+        console.log("NOT WORKING",error);
       });
   };
 
@@ -106,7 +109,7 @@ class Login extends Component {
                     type="submit"
                     value="Login"
                     className="btn float-right login_btn"
-                    onClick={this.axiosPosty}
+                    onClick={this.submitResponse}
                   >
                     Submit
                   </button>
