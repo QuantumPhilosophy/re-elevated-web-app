@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import Card from "../Card";
 import { Link } from "react-router-dom";
 import "./style.css";
-<<<<<<< HEAD
-// import { Redirect } from "react-router-dom";
-=======
->>>>>>> ab532a11feb84a46f0e99ef404be536d4d22ff4b
 import API from "../../utils/API";
 
 class SignUp extends Component {
