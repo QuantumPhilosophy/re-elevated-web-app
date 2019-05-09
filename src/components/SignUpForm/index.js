@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Card from "../Card";
 import { Link } from "react-router-dom";
 import "./style.css";
-import axios from "axios";
+// import { Redirect } from "react-router-dom";
 import API from "../../utils/API";
 
 class SignUp extends Component {
@@ -10,8 +10,24 @@ class SignUp extends Component {
     name: "",
     password: "",
     address: "",
-    email: ""
+    email: "",
+    loggedIn: false
+    // redirect: null
   };
+  // setRedirect = () => {
+  //   this.setState({
+  //     redirect: true
+  //   });
+  // };
+
+  // renderRedirect = () => {
+  //   let accountType = this.state.account;
+  //   if (accountType === "merchant") {
+  //     return <Redirect to="/merchant" />;
+  //   } else {
+  //     return <Redirect to="/grower" />;
+  //   }
+  // };
   handleInputChange = event => {
     const { name, value } = event.target;
 
@@ -26,7 +42,7 @@ class SignUp extends Component {
       password: this.state.password,
       email: this.state.email,
       address: this.state.address,
-      account_type: this.state.value
+      account_type: this.state.account
     })
       .then(function(response) {
         console.log(response);
@@ -44,27 +60,53 @@ class SignUp extends Component {
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({ account: event.target.value });
   }
 
   handleSubmit(event) {
+    let accountType = this.state.account;
+
     event.preventDefault();
     API.createNewUser({
       name: this.state.name,
       password: this.state.password,
       email: this.state.email,
       address: this.state.address,
-      account_type: this.state.value
+      account_type: this.state.account
     })
       .then(function(response) {
-        console.log(response);
+        // console.log("this is what ur console logging");
+        console.log(accountType);
+
+        //conidtional statement on checking for type account to redirect to specific page
+        if (response.status === 200) {
+          // update the state
+          // renderRedirect()
+          if (accountType === "merchant") {
+            // redirectPage.setState({
+            //   loggedIn: true,
+            //   // user: response.data.user,
+            //   redirectPage: "/merchant"
+            // });
+          } else {
+            //   this.setState({
+            //     redirectTo: "/grower"
+            //   });
+          }
+        }
+        //===============================//
       })
       .catch(function(error) {
         console.log(error);
       });
-    console.log("You register as a: " + this.state.value);
+    console.log("You register as a: " + this.state.account);
   }
   render() {
+    //redirecting page on submit click
+    // if (this.state.redirectTo) {
+    //   return <Redirect to={{ pathname: this.state.redirectTo }} />;
+    // }
+    //======================//
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -76,7 +118,7 @@ class SignUp extends Component {
                   <form>
                     <div>
                       <select
-                        value={this.state.value}
+                        value={this.state.account}
                         onChange={this.handleChange}
                         placeholder="You Are A"
                       >
@@ -137,6 +179,7 @@ class SignUp extends Component {
                         value="Submit"
                         className="btn float-right login_btn m-1"
                       />
+
                       <Link
                         type="button"
                         value="Login"
