@@ -37,30 +37,24 @@ class Home extends Component {
     alert("submitted");
   };
 
-  getApiUser = () => {
-    console.log("Got Users");
-    API.getUsers().then(function (results) {
-      console.log(JSON.stringify(results.data));
-    });
-  }
+  handleStrainSave = () => {};
+  //   const strain = this.state.strains.find(strain => strain.id === id);
+  //   //THESE ARE DUMMY KEY VALUE PAIR FOR OUR APIs, I WAS NOT SURE SINCE WE DONT HAVE OUR API UP AND RUNNING//
+  //   API.saveStrain({
+  //     id: strain.id,
+  //     name: strain.name,
+  //     label: strain.label,
+  //     description: strain.description,
+  //     positive: strain.positive,
+  //     negative: strain.negative,
+  //     medical: strain.medical,
+  //     rating: strain.rating,
+  //     flavor: strain.flavor,
+  //     race: strain.race,
+  //     link: strain.link
+  //   }).then(() => this.getStrains());
+  // };
 
-  handleStrainSave = id => {
-    const strain = this.state.strains.find(strain => strain.id === id);
-    //THESE ARE DUMMY KEY VALUE PAIR FOR OUR APIs, I WAS NOT SURE SINCE WE DONT HAVE OUR API UP AND RUNNING//
-    API.saveStrain({
-      id: strain.id,
-      name: strain.name,
-      label: strain.label,
-      description: strain.description,
-      positive: strain.positive,
-      negative: strain.negative,
-      medical: strain.medical,
-      rating: strain.rating,
-      flavor: strain.flavor,
-      race: strain.race,
-      link: strain.link
-    }).then(() => this.getStrains());
-  };
   render() {
     return (
       <div>

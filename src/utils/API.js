@@ -7,12 +7,21 @@ export default {
     return axios.get(url + "/users");
   },
   createNewUser: userObj => {
-    return axios.post(`${url}/auth/${userObj.account_type}/signup`, {
+    return axios.post(`${url}/auth/signup`, {
       name: userObj.name,
       email: userObj.email,
       password: userObj.password,
       address: userObj.address
     });
+  },
+  
+  login: user => {
+    console.log("API.js login call triggered");
+    return axios.post(`${url}/auth/login`, {
+      username: user.username,
+      password: user.password,
+      type: user.type
+    })
   }
   // getSavedBooks: function() {
   //   return axios.get(url + "/api/strains");
