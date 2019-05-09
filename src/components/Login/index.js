@@ -7,7 +7,7 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
-    type: "user",
+    account_type: "",
     checked: false
   };
 
@@ -34,7 +34,7 @@ class Login extends Component {
     API.login({
       username: this.state.username,
       password: this.state.password,
-      type: this.state.type
+      type: this.state.account_type
     })
       .then(function(response) {
         // here is where you would redirect after successful login
