@@ -11,22 +11,7 @@ class SignUp extends Component {
     address: "",
     email: "",
     loggedIn: false
-    // redirect: null
   };
-  // setRedirect = () => {
-  //   this.setState({
-  //     redirect: true
-  //   });
-  // };
-
-  // renderRedirect = () => {
-  //   let accountType = this.state.account;
-  //   if (accountType === "merchant") {
-  //     return <Redirect to="/merchant" />;
-  //   } else {
-  //     return <Redirect to="/grower" />;
-  //   }
-  // };
   handleInputChange = event => {
     const { name, value } = event.target;
 
@@ -35,23 +20,6 @@ class SignUp extends Component {
     });
   };
 
-  axiosPost = () => {
-    API.createNewUser({
-      name: this.state.name,
-      password: this.state.password,
-      email: this.state.email,
-      address: this.state.address,
-      account_type: this.state.account
-    })
-      .then(function(response) {
-        // this is where redirects happen after signing up
-        console.log("You have successfully logged in");
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
   constructor(props) {
     super(props);
     this.state = { value: "" };
