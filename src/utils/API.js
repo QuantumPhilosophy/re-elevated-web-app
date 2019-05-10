@@ -35,7 +35,11 @@ export default {
     return axios.post(`${url}/auth/login`, {
       username: user.username,
       password: user.password,
+<<<<<<< HEAD
       type: user.type
+=======
+      type: user.account_type
+>>>>>>> bb47349180f1446f330091070fab1b6fddc7f02d
     });
   }
 

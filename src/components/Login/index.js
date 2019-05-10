@@ -8,8 +8,12 @@ class Login extends Component {
     username: "",
     password: "",
     account_type: "",
+<<<<<<< HEAD
     checked: false,
     loggedIn: false
+=======
+    checked: false
+>>>>>>> bb47349180f1446f330091070fab1b6fddc7f02d
   };
 
   // handle any changes to the input fields
@@ -41,25 +45,40 @@ class Login extends Component {
       .then(function(response) {
         // here is where you would redirect after successful login
         console.log("Working", response);
+<<<<<<< HEAD
         this.setState(prevState => ({
           loggedIn: !prevState.loggedIn
         }));
+=======
+>>>>>>> bb47349180f1446f330091070fab1b6fddc7f02d
       })
       .catch(function(error) {
         console.log("NOT WORKING", error);
       });
+<<<<<<< HEAD
 
+=======
+>>>>>>> bb47349180f1446f330091070fab1b6fddc7f02d
     console.log(this.state.account_type);
   };
   constructor(props) {
     super(props);
     this.state = { account_type: "" };
+<<<<<<< HEAD
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+=======
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+>>>>>>> bb47349180f1446f330091070fab1b6fddc7f02d
   handleInputChange(event) {
     this.setState({ value: event.target.account_type });
   }

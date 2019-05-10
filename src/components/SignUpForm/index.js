@@ -45,6 +45,7 @@ class SignUp extends Component {
     })
       .then(function(response) {
         // this is where redirects happen after signing up
+        console.log("You have successfully logged in");
         console.log(response);
       })
       .catch(function(error) {
