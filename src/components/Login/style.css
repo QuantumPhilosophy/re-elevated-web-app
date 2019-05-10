@@ -87,3 +87,8 @@ input:focus {
 .links a {
   margin-left: 4px;
 }
+
+select {
+  padding: 10px;
+  font-size: 15px;
+}

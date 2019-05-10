@@ -1,0 +1,7 @@
+.review-container {
+  display: flex;
+  justify-content: space-around;
+}
+body {
+  background: rgba(0, 0, 0, 0.24);
+}
