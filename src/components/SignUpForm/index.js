@@ -10,7 +10,8 @@ class SignUp extends Component {
     password: "",
     address: "",
     email: "",
-    loggedIn: false
+    loggedIn: false,
+    userId: 0,
     // redirect: null
   };
   // setRedirect = () => {
@@ -35,23 +36,6 @@ class SignUp extends Component {
     });
   };
 
-  axiosPost = () => {
-    API.createNewUser({
-      name: this.state.name,
-      password: this.state.password,
-      email: this.state.email,
-      address: this.state.address,
-      account_type: this.state.account
-    })
-      .then(function(response) {
-        // this is where redirects happen after signing up
-        console.log("You have successfully logged in");
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
   constructor(props) {
     super(props);
     this.state = { value: "" };
@@ -75,7 +59,12 @@ class SignUp extends Component {
       address: this.state.address,
       account_type: this.state.account
     })
-      .then(function(response) {
+      .then((response) => {
+        console.log(response.data.id)
+        this.setState ({
+          userId : response.data.id
+        })
+        
         // console.log("this is what ur console logging");
         console.log(accountType);
 

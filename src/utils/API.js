@@ -37,7 +37,12 @@ export default {
       password: user.password,
       type: user.account_type
     });
+  },
+
+  getUser : () => {
+    return axios.get (`${url}/auth/user_data`)
   }
+
 
   // getSavedBooks: function() {
   //   return axios.get(url + "/api/strains");
