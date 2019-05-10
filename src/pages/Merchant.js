@@ -1,6 +1,7 @@
 import Review from "../components/ReviewBox";
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
+import GrowerInfo from "../components/Grower";
 
 class Merchant extends Component {
   state = {
@@ -20,6 +21,7 @@ class Merchant extends Component {
   render() {
     return (
       <div>
+        <GrowerInfo />
         <Review
           handleReviewInput={this.handleInputChange}
           handleReviewSubmit={this.handleReviewSubmit}

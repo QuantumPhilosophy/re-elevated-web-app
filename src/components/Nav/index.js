@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Review from "../ReviewBox";
+import Search from "../SearchBox";
 import "./style.css";
 
 class Nav extends Component {
@@ -115,14 +115,14 @@ class Nav extends Component {
                 Sign Up
               </Link>
             </li>
+            <li>
+              <Search
+                handleInputChange={this.handleInputChange}
+                handleFormSubmit={this.handleFormSubmit}
+                q={this.state.q}
+              />
+            </li>
           </ul>
-          <div className="nav-search">
-            <Review
-              handleInputChange={this.handleInputChange}
-              handleFormSubmit={this.handleFormSubmit}
-              q={this.state.q}
-            />
-          </div>
         </div>
       </nav>
     );
