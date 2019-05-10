@@ -8,7 +8,8 @@ class Login extends Component {
     username: "",
     password: "",
     account_type: "",
-    checked: false
+    checked: false,
+    loggedIn: false
   };
 
   // handle any changes to the input fields
@@ -30,6 +31,7 @@ class Login extends Component {
 
   submitResponse = event => {
     event.preventDefault();
+
     console.log("You pressed SubmitBTN");
     API.login({
       username: this.state.username,
@@ -39,10 +41,14 @@ class Login extends Component {
       .then(function(response) {
         // here is where you would redirect after successful login
         console.log("Working", response);
+        this.setState(prevState => ({
+          loggedIn: !prevState.loggedIn
+        }));
       })
       .catch(function(error) {
         console.log("NOT WORKING", error);
       });
+
     console.log(this.state.account_type);
   };
   constructor(props) {
@@ -146,14 +152,12 @@ class Login extends Component {
                   Remember Me
                 </div>
                 <div className="form-group">
-                  <button
-                    type="submit"
-                    value="Login"
+                  <input
+                    type="button"
+                    value={this.state.loggedIn ? "logout" : "login"}
                     className="btn float-right login_btn"
-                    onClick={this.submitResponse}
-                  >
-                    Submit
-                  </button>
+                    onClick={this.submitResponse.bind(this)}
+                  />
                 </div>
               </form>
             </div>
