@@ -23,7 +23,9 @@ function MerchantReview({
           <Col size="md-8">
             <p>Rating: {merchant_rating}</p>
             <p>
-              {user_id} said that {merchant_review}
+              {user_id} said that: 
+              <br />
+              {merchant_review}
             </p>
           </Col>
         </Row>

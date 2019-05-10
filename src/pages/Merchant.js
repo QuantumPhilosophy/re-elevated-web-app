@@ -7,6 +7,7 @@ class Merchant extends Component {
   state = {
     inputVal: ""
   };
+  
   handleReviewInput = event => {
     const { name, value } = event.target;
     this.setState({
