@@ -34,7 +34,7 @@ class Login extends Component {
     API.login({
       username: this.state.username,
       password: this.state.password,
-      type: this.state.account_type
+      account_type: this.state.account_type
     })
       .then(function(response) {
         // here is where you would redirect after successful login
@@ -43,6 +43,7 @@ class Login extends Component {
       .catch(function(error) {
         console.log("NOT WORKING", error);
       });
+    console.log(this.state.account_type);
   };
   constructor(props) {
     super(props);
@@ -57,7 +58,7 @@ class Login extends Component {
     this.setState({ value: event.target.account_type });
   }
   handleChange(event) {
-    this.setState({ account_type: event.target.account_type });
+    this.setState({ account_type: event.target.value });
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -72,7 +73,6 @@ class Login extends Component {
       .catch(function(error) {
         console.log(error);
       });
-    console.log("You register as a: " + this.state.account_type);
   }
   render() {
     return (
