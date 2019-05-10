@@ -35,7 +35,7 @@ export default {
     return axios.post(`${url}/auth/login`, {
       username: user.username,
       password: user.password,
-      type: user.type
+      type: user.account_type
     });
   }
 
