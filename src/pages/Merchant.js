@@ -29,7 +29,7 @@ class Merchant extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav account_type = {this.props.location.state.userInfo.account_type} />
         <p> 
           user_name {this.props.location.state.userInfo.merchant_name}
           <br />
