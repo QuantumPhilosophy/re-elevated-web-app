@@ -3,6 +3,7 @@ import Card from "../Card";
 import { Link, Redirect } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
+import Nav from "../../components/Nav"
 
 class SignUp extends Component {
   state = {
@@ -59,6 +60,7 @@ class SignUp extends Component {
     } else {
       return (
         <div>
+          <Nav />
           <form onSubmit={this.handleSubmit}>
             <div className="container">
               <div className="d-flex justify-content-center h-100">
