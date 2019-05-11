@@ -31,10 +31,10 @@ class Merchant extends Component {
   };
 
   componentDidMount() {
-<<<<<<< HEAD
     console.log("state", this.props.location.state.userInfo);
     this.callGrowerdb();
-=======
+
+    
     // grab a list of growers
     API.getGrowers().then(results => {
       console.log("growers list", results);
@@ -59,7 +59,6 @@ class Merchant extends Component {
         growerReviews: results
       })
     });
->>>>>>> 7f85ecaec0845f9c2db71c9c1005c87ad7f2f03f
   }
 
   callGrowerdb = () => {

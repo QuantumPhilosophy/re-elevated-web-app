@@ -45,14 +45,8 @@ class SignUp extends Component {
     })
       .then(response => {
         this.setState({
-<<<<<<< HEAD
-          redirect: true,
-          userId: response.data.id
-        });
-=======
           redirect: true
         })
->>>>>>> 7f85ecaec0845f9c2db71c9c1005c87ad7f2f03f
       })
       .catch(function(error) {
         console.log(error);
