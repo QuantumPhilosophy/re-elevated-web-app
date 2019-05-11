@@ -44,7 +44,7 @@ class Login extends Component {
       .then((response) => {
         // here is where you would redirect after successful login
         console.log("Working", response.data);
-        // response.data.account_type = this.state.account_type
+        response.data.account_type = this.state.account_type
         this.setState({
           redirect: true,
           userInfo: response.data
