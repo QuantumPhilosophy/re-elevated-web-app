@@ -2,12 +2,16 @@ import Review from "../components/ReviewBox";
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import GrowerInfo from "../components/Grower";
+import { List } from "../components/List"
 import Nav from "../components/Nav";
 import API from "../utils/API";
 
 class Merchant extends Component {
   state = {
-    inputVal: ""
+    merchant_id: this.props.location.state.userInfo.id,
+    growerList: [],
+    merchReviews: [],
+    growerReviews: []
   };
   
   handleReviewInput = event => {
@@ -23,39 +27,52 @@ class Merchant extends Component {
   };
 
   componentDidMount() {
-    console.log("state", this.props.location.state.userInfo);
+    // grab a list of growers
+    API.getGrowers().then(results => {
+      console.log("growers list", results);
+      this.setState({
+        growerList: results
+      })
+    });
+
+    // grab a couple most recent reviews about the merchant
+    API.getMerchantReviews(this.state.merchant_id).then(results => {
+      // results is a list of reviews about the merchant
+      console.log("merchant reviews", results);
+      this.setState({
+        merchReviews: results
+      })
+    });
+
+    // grab a couple most recent added reviews about grower
+    API.getGrowerReviews(this.state.merchant_id).then(results => {
+      console.log("grower reviews", results);
+      this.setState({
+        growerReviews: results
+      })
+    });
   }
 
   render() {
     return (
       <div>
         <Nav account_type = {this.props.location.state.userInfo.account_type} />
-        <p> 
-          user_name {this.props.location.state.userInfo.merchant_name}
-          <br />
-          user_email {this.props.location.state.userInfo.merchant_email}
-          <br />
-          user_password {this.props.location.state.userInfo.merchant_password}
-        </p>
-        <GrowerInfo />
-        <Review
-          handleReviewInput={this.handleInputChange}
-          handleReviewSubmit={this.handleReviewSubmit}
-          inputVal={this.state.inputVal}
-        />
-        <div className="navbari" id="navbarNav">
-          <ul className="navi">
-            <li className="li-item">
-              <Link to="/">wishlist/Tried</Link>
-            </li>
-            <li className="li-item">
-              <Link to="/">Reviews</Link>
-            </li>
-            <li className="li-item">
-              <Link to="/">Search</Link>
-            </li>
-          </ul>
-        </div>
+        {/* Here will be the three randomly picked out growers from growers table */}
+        <List>
+
+          {/* Pick three random growers from the DB */}
+        </List>
+
+        <List>
+
+          {/* Pick two most recent reviews about the merchant */}
+        </List>
+
+        <List>
+
+          {/* Pick two most recent reviews this merchant wrote about growers */}
+        </List>
+        
       </div>
     );
   }
