@@ -10,6 +10,7 @@ import Reviews from "./pages/Reviews";
 import Grower from "./pages/Grower";
 import Ads from "./pages/AdInfo";
 import View from "./pages/View";
+import ImageUpload from "./pages/UploadImageForm";
 import "./App.css";
 
 function App() {
@@ -32,7 +33,9 @@ function App() {
 
             <Route exact path="/grower" component={Grower} />
             <Route exact path="/grower/reviews" component={Reviews} />
-
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/reviews" component={Reviews} />
+            <Route exact path="/ImageUpload" component={ImageUpload} />
           </switch>
         </div>
 

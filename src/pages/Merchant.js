@@ -72,7 +72,6 @@ class Merchant extends Component {
 
           {/* Pick two most recent reviews this merchant wrote about growers */}
         </List>
-        
       </div>
     );
   }
