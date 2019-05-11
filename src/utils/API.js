@@ -45,15 +45,12 @@ export default {
       type: user.account_type
     });
   },
-  getGrowers: () => {
-    return axios.get(`${url}/growers`);
-  },
-  getGrowerReview: merchid => {
-    return axios.get(`${url}/merchant/growerreviews/${merchid}`);
-  },
-  getMerchReview: merchid => {
-    return axios.get(`${url}/merchant/merchantreviews/${merchid}`);
+
+  getUser: () => {
+    return axios.get(`${url}/auth/user_data`)
   }
+
+
   // getSavedBooks: function() {
   //   return axios.get(url + "/api/strains");
   // },

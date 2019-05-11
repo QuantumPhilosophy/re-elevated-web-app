@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import Card from "../Card";
 import "./style.css";
 import API from "../../utils/API";
+import Nav from "../../components/Nav";
 
 class Login extends Component {
   state = {
@@ -10,8 +11,8 @@ class Login extends Component {
     password: "",
     account_type: "",
     checked: false,
-    loggedIn: false,
-    redirect: false
+    redirect: false,
+    userInfo: {}
   };
 
   // handle any changes to the input fields
@@ -41,54 +42,53 @@ class Login extends Component {
       account_type: this.state.account_type
     })
       .then((response) => {
+        // here is where you would redirect after successful login
+        console.log("Working", response.data);
+        // response.data.account_type = this.state.account_type
         this.setState({
-          redirect: true
+          redirect: true,
+          userInfo: response.data
         })
       })
       .catch((error) => {
         console.log("NOT WORKING", error);
       });
-    // console.log("before set state");
-    // 
-    // console.log("after set state");
   };
+
   constructor(props) {
     super(props);
     this.state = { account_type: "" };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInputChange(event) {
-    this.setState({ value: event.target.account_type });
-  }
   handleChange(event) {
     this.setState({ account_type: event.target.value });
   }
-  handleSubmit(event) {
-    event.preventDefault();
-    API.login({
-      password: this.state.password,
-      username: this.state.username,
-      account_type: this.state.account_type
-    })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
 
   render() {
-    if (this.state.redirect) {
-      console.log(this.state.account_type)
-      let path = "/" + this.state.account_type
-      return <Redirect to={path} />
-    } else {
+    if (this.state.redirect && this.state.account_type === "merchant") {
       return (
+        <Redirect
+          to={{
+            pathname: "/merchant",
+            state: {
+              userInfo: this.state.userInfo
+            }
+          }} />);
+    } else if (this.state.redirect && this.state.account_type === "grower") {
+      return <Redirect
+        to={{
+          pathname: "/grower",
+          state: {
+            userInfo: this.state.userInfo
+          }
+        }} />;
+    }
+    return (
+      <div>
+        <Nav />
         <div className="container">
           <div className="d-flex justify-content-center h-100">
             <Card title="Login">
@@ -106,7 +106,8 @@ class Login extends Component {
                     </span>
                   </div>
                 </div>
-                <form onSubmit={this.handleSubmit}>
+                <form >
+                  {/* this goes above in form tag if needed onSubmit={this.handleSubmit} */}
                   <div>
                     <select
                       value={this.state.account_type}
@@ -159,12 +160,14 @@ class Login extends Component {
                     Remember Me
                   </div>
                   <div className="form-group">
-                    <input
-                      type="button"
-                      value={this.state.loggedIn ? "logout" : "login"}
+                    <button
+                      type="submit"
+                      value="Login"
                       className="btn float-right login_btn"
-                      onClick={this.submitResponse.bind(this)}
-                    />
+                      onClick={this.submitResponse}
+                    >
+                      Submit
+                    </button>
                   </div>
                 </form>
               </div>
@@ -177,8 +180,16 @@ class Login extends Component {
             </Card>
           </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
+
 export default Login;
+//=======================//
+{/* <input
+type="button"
+value={this.state.loggedIn ? "logout" : "login"}
+className="btn float-right login_btn"
+onClick={this.submitResponse.bind(this)}
+/> */}
