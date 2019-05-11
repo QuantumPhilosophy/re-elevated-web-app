@@ -35,23 +35,6 @@ class SignUp extends Component {
     });
   };
 
-  axiosPost = () => {
-    API.createNewUser({
-      name: this.state.name,
-      password: this.state.password,
-      email: this.state.email,
-      address: this.state.address,
-      account_type: this.state.account
-    })
-      .then(function(response) {
-        // this is where redirects happen after signing up
-        console.log("You have successfully logged in");
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
   constructor(props) {
     super(props);
     this.state = { value: "" };
@@ -75,7 +58,7 @@ class SignUp extends Component {
       address: this.state.address,
       account_type: this.state.account
     })
-      .then(function(response) {
+      .then(function (response) {
         // console.log("this is what ur console logging");
         console.log(accountType);
 
@@ -97,7 +80,7 @@ class SignUp extends Component {
         }
         //===============================//
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
     console.log("You register as a: " + this.state.account);
@@ -180,14 +163,14 @@ class SignUp extends Component {
                         value="Submit"
                         className="btn float-right login_btn m-1"
                       />
-                      <Link
+                      {/* <Link
                         type="button"
                         value="Login"
                         className="btn float-right login_btn m-1"
                         to="/Login"
                       >
                         Login
-                      </Link>
+                      </Link> */}
                     </div>
                   </form>
                 </div>

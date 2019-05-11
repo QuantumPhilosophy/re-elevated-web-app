@@ -20,7 +20,7 @@ body {
   margin-bottom: auto;
   padding: 10px;
   width: 400px;
-  background-color: rgba(255, 254, 254, 0.5) !important;
+  background-color: rgba(218, 209, 209, 0.76) !important;
 }
 
 .social_icon span {
@@ -35,7 +35,7 @@ body {
 }
 
 .card-header h3 {
-  color: rgb(44, 44, 44);
+  color: rgb(75, 69, 69);
 }
 
 .social_icon {
@@ -56,7 +56,7 @@ body {
 input:focus {
   outline: 0 0 0 0 !important;
   box-shadow: 0 0 0 0 !important;
-  color: #ffc312;
+  color: #eccf79;
 }
 .form-control {
   color: #ffc312;
@@ -65,7 +65,9 @@ input:focus {
   color: rgb(204, 236, 17);
 }
 input.form-control {
-  color: #ffc312;
+  color: #ffee00;
+  text-shadow:1px 1px #705504;
+  /* font-weight: bold */
 }
 ::-webkit-input-placeholder {
   color: peachpuff;

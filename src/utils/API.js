@@ -3,7 +3,7 @@ import axios from "axios";
 const url = "http://localhost:3030";
 
 export default {
-  create: userObj => {},
+  create: userObj => { },
 
   // one route for all signup
   createNewUser: userObj => {
@@ -22,11 +22,18 @@ export default {
   uploadImage: image => {
     return axios.post({});
   },
-  merchantPostReview: commentGrower => {
-    return axios.post(`${url}/growerreviews/add/{merchant_id}`, commentGrower);
+  // Merchant adding growers review (post)
+  merchantPostReview: (data) => {
+    return axios.post(`${url}/growerreviews/add/${data.merchant_id}`, {
+      merchant_id: data.merchant_id,
+      grower_id: data.grower_id,
+      grower_review: data.grower_review,
+      grower_rating: data.grower_rating
+
+    });
   },
-  getReviewOnMerchant: custyReview => {
-    return axios.get(`${url}/merchantreviews/{merchant_id}`, custyReview);
+  getReviewOnMerchant: merchantId => {
+    return axios.get(`${url}/merchantreviews/${merchantId}`);
   },
   // one route for all login
 
@@ -35,14 +42,18 @@ export default {
     return axios.post(`${url}/auth/login`, {
       username: user.username,
       password: user.password,
-<<<<<<< HEAD
-      type: user.type
-=======
       type: user.account_type
->>>>>>> bb47349180f1446f330091070fab1b6fddc7f02d
     });
+  },
+  getGrowers: () => {
+    return axios.get(`${url}/growers`);
+  },
+  getGrowerReview: merchid => {
+    return axios.get(`${url}/merchant/growerreviews/${merchid}`);
+  },
+  getMerchReview: merchid => {
+    return axios.get(`${url}/merchant/merchantreviews/${merchid}`);
   }
-
   // getSavedBooks: function() {
   //   return axios.get(url + "/api/strains");
   // },
