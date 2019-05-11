@@ -3,7 +3,7 @@ import Card from "../Card";
 import { Link, Redirect } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
-import Nav from "../../components/Nav"
+import Nav from "../../components/Nav";
 
 class SignUp extends Component {
   state = {
@@ -35,7 +35,6 @@ class SignUp extends Component {
   }
 
   handleSubmit(event) {
-
     event.preventDefault();
     API.createNewUser({
       name: this.state.name,
@@ -44,36 +43,13 @@ class SignUp extends Component {
       address: this.state.address,
       account_type: this.state.account
     })
-
-      //========================================//
-      // .then(function (response) {
-      //   // console.log("this is what ur console logging");
-      //   console.log(accountType);
-
-      //   //conidtional statement on checking for type account to redirect to specific page
-      //   if (response.status === 200) {
-      //     // update the state
-      //     // renderRedirect()
-      //     if (accountType === "merchant") {
-      //       // redirectPage.setState({
-      //       //   loggedIn: true,
-      //       //   // user: response.data.user,
-      //       //   redirectPage: "/merchant"
-      //       // });
-      //     } else {
-      //       //   this.setState({
-      //       //     redirectTo: "/grower"
-      //       //   });
-      //     }
-      //   }
-      //===================================//
-      .then((response) => {
+      .then(response => {
         this.setState({
-          redirect: true
+          redirect: true,
           userId: response.data.id
-        })
+        });
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   }

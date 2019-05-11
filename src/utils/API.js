@@ -3,7 +3,7 @@ import axios from "axios";
 const url = "http://localhost:3030";
 
 export default {
-  create: userObj => { },
+  create: userObj => {},
 
   // one route for all signup
   createNewUser: userObj => {
@@ -23,13 +23,12 @@ export default {
     return axios.post({});
   },
   // Merchant adding growers review (post)
-  merchantPostReview: (data) => {
+  merchantPostReview: data => {
     return axios.post(`${url}/growerreviews/add/${data.merchant_id}`, {
       merchant_id: data.merchant_id,
       grower_id: data.grower_id,
       grower_review: data.grower_review,
       grower_rating: data.grower_rating
-
     });
   },
   getReviewOnMerchant: merchantId => {
@@ -47,9 +46,17 @@ export default {
   },
 
   getUser: () => {
-    return axios.get(`${url}/auth/user_data`)
-  }
+    return axios.get(`${url}/auth/user_data`);
+  },
 
+  getGrower: () => {
+    return axios.get(`${url}/growers`);
+  },
+  getGrowerReview: data => {
+    return axios.get(`${url}/merchant/merchantreviews/${data.merchant_id}`, {
+      merchant_id: data.merchantId
+    });
+  }
 
   // getSavedBooks: function() {
   //   return axios.get(url + "/api/strains");

@@ -6,9 +6,9 @@ import "./style.css";
 
 class Review extends Component {
   state = {
-
-  }
-
+    growerReview: [],
+    merchantReview: []
+  };
 
   render() {
     return (

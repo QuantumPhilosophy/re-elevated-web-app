@@ -7,7 +7,7 @@ import API from "../utils/API";
 
 class Merchant extends Component {
   state = {
-    inputVal: ""
+    GrowerInfo: []
   };
 
   handleReviewInput = event => {
@@ -24,8 +24,21 @@ class Merchant extends Component {
 
   componentDidMount() {
     console.log("state", this.props.location.state.userInfo);
+    this.callGrowerdb();
   }
 
+  callGrowerdb = () => {
+    API.getGrower().then(res => {
+      console.log("data for render", res.data);
+
+      this.setState({
+        GrowerInfo: res.data
+      });
+    });
+  };
+  handleOnClick = id => {
+    console.log("id", id);
+  };
   render() {
     return (
       <div>
@@ -37,25 +50,20 @@ class Merchant extends Component {
           <br />
           user_password {this.props.location.state.userInfo.merchant_password}
         </p>
-        <GrowerInfo />
+        {this.state.GrowerInfo.map(grower => (
+          <GrowerInfo
+            name={grower.grower_name}
+            email={grower.grower_email}
+            id={grower.id}
+            handleOnClick={this.handleOnClick}
+          />
+        ))}
+
         <Review
           handleReviewInput={this.handleInputChange}
           handleReviewSubmit={this.handleReviewSubmit}
           inputVal={this.state.inputVal}
         />
-        <div className="navbari" id="navbarNav">
-          <ul className="navi">
-            <li className="li-item">
-              <Link to="/">wishlist/Tried</Link>
-            </li>
-            <li className="li-item">
-              <Link to="/">Reviews</Link>
-            </li>
-            <li className="li-item">
-              <Link to="/">Search</Link>
-            </li>
-          </ul>
-        </div>
       </div>
     );
   }
