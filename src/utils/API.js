@@ -39,8 +39,8 @@ export default {
     });
   },
 
-  getUser : () => {
-    return axios.get (`${url}/auth/user_data`)
+  getUser: () => {
+    return axios.get(`${url}/auth/user_data`)
   }
 
 

@@ -1,14 +1,18 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import Card from "../Card";
 import "./style.css";
 import API from "../../utils/API";
+import Nav from "../../components/Nav";
 
 class Login extends Component {
   state = {
     username: "",
     password: "",
     account_type: "",
-    checked: false
+    checked: false,
+    redirect: false,
+    userInfo: {}
   };
 
   // handle any changes to the input fields
@@ -36,134 +40,144 @@ class Login extends Component {
       password: this.state.password,
       account_type: this.state.account_type
     })
-      .then(function(response) {
+      .then((response) => {
         // here is where you would redirect after successful login
-        console.log("Working", response);
+        console.log("Working", response.data);
+        // response.data.account_type = this.state.account_type
+        this.setState({
+          redirect: true,
+          userInfo: response.data
+        })
       })
       .catch(function(error) {
         console.log("NOT WORKING", error);
       });
-    console.log(this.state.account_type);
   };
+
   constructor(props) {
     super(props);
     this.state = { account_type: "" };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInputChange(event) {
-    this.setState({ value: event.target.account_type });
-  }
   handleChange(event) {
     this.setState({ account_type: event.target.value });
   }
-  handleSubmit(event) {
-    event.preventDefault();
-    API.login({
-      password: this.state.password,
-      username: this.state.username,
-      account_type: this.state.account_type
-    })
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  }
+
   render() {
+    if (this.state.redirect && this.state.account_type === "merchant") {
+      return (
+        <Redirect 
+        to={{ 
+          pathname: "/merchant",
+          state: {
+            userInfo: this.state.userInfo 
+          }
+        }} />);
+    } else if (this.state.redirect && this.state.account_type === "grower") {
+      return <Redirect 
+        to={{ 
+          pathname: "/grower",
+          state: { 
+            userInfo: this.state.userInfo 
+          }
+        }} />;
+    }
     return (
-      <div className="container">
-        <div className="d-flex justify-content-center h-100">
-          <Card title="Login">
-            <div>
-              <div className="card-header">
-                <div className="d-flex justify-content-end social_icon">
-                  <span>
-                    <i className="fab fa-facebook-square" />
-                  </span>
-                  <span>
-                    <i className="fab fa-google-plus-square" />
-                  </span>
-                  <span>
-                    <i className="fab fa-twitter-square" />
-                  </span>
-                </div>
-              </div>
-              <form onSubmit={this.handleSubmit}>
-                <div>
-                  <select
-                    value={this.state.account_type}
-                    onChange={this.handleChange}
-                    placeholder="You Are A"
-                  >
-                    <option value="">Register as a...</option>
-                    <option value="merchant">Merchant</option>
-                    <option value="grower">Grower</option>
-                    <option value="admin">Admin</option>
-                  </select>
-                </div>
-                <div className="input-group form-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <i className="fas fa-user fa-lg" />
+      <div>
+        <Nav />
+        <div className="container">
+          <div className="d-flex justify-content-center h-100">
+            <Card title="Login">
+              <div>
+                <div className="card-header">
+                  <div className="d-flex justify-content-end social_icon">
+                    <span>
+                      <i className="fab fa-facebook-square" />
+                    </span>
+                    <span>
+                      <i className="fab fa-google-plus-square" />
+                    </span>
+                    <span>
+                      <i className="fab fa-twitter-square" />
                     </span>
                   </div>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Username"
-                    name="username"
-                    value={this.state.username}
-                    onChange={this.handleInputChange}
-                  />
                 </div>
-                <div className="input-group form-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <i className="fas fa-key fa-lg" />
-                    </span>
+                <form > 
+                  {/* this goes above in form tag if needed onSubmit={this.handleSubmit} */}
+                  <div>
+                    <select
+                      value={this.state.account_type}
+                      onChange={this.handleChange}
+                      placeholder="You Are A"
+                    >
+                      <option value="">Register as a...</option>
+                      <option value="merchant">Merchant</option>
+                      <option value="grower">Grower</option>
+                      <option value="admin">Admin</option>
+                    </select>
                   </div>
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleInputChange}
-                  />
-                </div>
-                <div className="row align-items-center remember remembercheck">
-                  <input
-                    type="checkbox"
-                    name="checkbox"
-                    value={this.state.checkbox}
-                    onChange={this.rememberchecked}
-                  />
-                  Remember Me
-                </div>
-                <div className="form-group">
-                  <button
-                    type="submit"
-                    value="Login"
-                    className="btn float-right login_btn"
-                    onClick={this.submitResponse}
-                  >
-                    Submit
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div className="card-footer">
-              <div className="d-flex justify-content-center links">
-                Don't have an account?
-                <a href="/signup">Sign Up</a>
+                  <div className="input-group form-group">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="fas fa-user fa-lg" />
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Username"
+                      name="username"
+                      value={this.state.username}
+                      onChange={this.handleInputChange}
+                    />
+                  </div>
+                  <div className="input-group form-group">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="fas fa-key fa-lg" />
+                      </span>
+                    </div>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="password"
+                      name="password"
+                      value={this.state.password}
+                      onChange={this.handleInputChange}
+                    />
+                  </div>
+                  <div className="row align-items-center remember remembercheck">
+                    <input
+                      type="checkbox"
+                      name="checkbox"
+                      value={this.state.checkbox}
+                      onChange={this.rememberchecked}
+                    />
+                    Remember Me
+                  </div>
+                  <div className="form-group">
+                    <button
+                      type="submit"
+                      value="Login"
+                      className="btn float-right login_btn"
+                      onClick={this.submitResponse}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
               </div>
-            </div>
-          </Card>
+              <div className="card-footer">
+                <div className="d-flex justify-content-center links">
+                  Don't have an account?
+                  <a href="/signup">Sign Up</a>
+                </div>
+              </div>
+            </Card>
+          </div>
         </div>
       </div>
     );
