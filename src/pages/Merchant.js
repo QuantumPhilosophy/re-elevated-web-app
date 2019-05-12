@@ -39,6 +39,7 @@ class Merchant extends Component {
     console.log("state", this.props.location.state.userInfo);
     console.log("this is a:::", this.props.account_type);
     this.callGrowerdb();
+    
 
     // grab a list of growers
     API.getGrowers().then(results => {
@@ -65,7 +66,6 @@ class Merchant extends Component {
         randomMerchReview: reviews
       });
     });
-    //TODO:I am not sure if the code below is working or not because my array was empty for the results.data so I couldnt reference the key for its value from our database. But for sure this code will render 3 cards and spit out random indexes
     // grab a couple most recent added reviews about grower
     API.getGrowerReviews(this.state.merchant_id).then(results => {
       console.log("grower reviews", results.data);
