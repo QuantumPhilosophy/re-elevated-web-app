@@ -9,13 +9,15 @@ function GrowerInfo({ name, email, handleOnClick, id }) {
     <div onClick={() => handleOnClick(id)} className="grower-container">
       <ListItem>
         <Row className="flex-wrap-reverse">
-          <Col size="md-6">
+          <Col size="md-12">
             <p>Grower: {name}</p>
           </Col>
-          {/* <Col size="md-4">
+        </Row>
+        {/* <Col size="md-4">
             <p>Rating: {"props.grower_avg_rating"}</p>
           </Col> */}
-          <Col size="md-6">
+        <Row>
+          <Col size="md-12">
             <p>Email: {email}</p>
           </Col>
         </Row>

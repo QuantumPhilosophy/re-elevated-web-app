@@ -5,3 +5,20 @@
 body {
   background: rgba(0, 0, 0, 0.24);
 }
+.wrapper {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  text-align: center;
+  width: 90vw;
+  height: 25vh;
+  margin: auto;
+}
+.column {
+  height: 100px;
+  width: 25%;
+}
+.wrapper-view {
+  width: 90vw;
+  margin: auto;
+}

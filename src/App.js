@@ -11,13 +11,13 @@ import Grower from "./pages/Grower";
 import Ads from "./pages/AdInfo";
 import View from "./pages/View";
 import ImageUpload from "./pages/UploadImageForm";
+// import ViewGrowers from "./pages/ViewGrower";
 import "./App.css";
 
 function App() {
   return (
     <Router>
       <div className="App">
-
         <div>
           <switch>
             <Route exact path="/" component={Login} />

@@ -66,7 +66,7 @@ input:focus {
 }
 input.form-control {
   color: #ffee00;
-  text-shadow:1px 1px #705504;
+  text-shadow: 1px 1px #705504;
   /* font-weight: bold */
 }
 ::-webkit-input-placeholder {
