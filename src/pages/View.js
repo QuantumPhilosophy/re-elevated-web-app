@@ -31,6 +31,7 @@ class View extends Component {
               name={grower.grower_name}
               email={grower.grower_email}
               id={grower.id}
+              // this handleOnclick is grabbing the id of the user, but needs to redirect to a new page that shows the information of the grower
               handleOnClick={this.handleOnClick}
               className="column"
             />
