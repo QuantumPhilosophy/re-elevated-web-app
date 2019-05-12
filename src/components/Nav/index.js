@@ -6,7 +6,7 @@ import "./style.css";
 class Nav extends Component {
   state = {
     open: false,
-    width: window.innerWidth,
+    width: window.innerWidth
   };
 
   handleInputChange = event => {
@@ -42,6 +42,8 @@ class Nav extends Component {
     window.removeEventListener("resize", this.updateWidth);
   }
   render() {
+    // TODO: The Nav is not rendering correctly, because this.props.account_type is undefined and it prevents the nav links from rendering
+    console.log("this is a ", this.props.account_type);
     if (this.props.account_type === "merchant") {
       return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
@@ -150,9 +152,9 @@ class Nav extends Component {
             className={`${this.state.open ? "" : "collapse "}navbar-collapse`}
             id="navbarNav"
           >
-          {/* EVERYTHING BELOW THIS NEEDS TO BE DYNAMIC */}
-          {/* Load in as merchant */}
-          
+            {/* EVERYTHING BELOW THIS NEEDS TO BE DYNAMIC */}
+            {/* Load in as merchant */}
+
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link
@@ -207,10 +209,10 @@ class Nav extends Component {
     } else {
       return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
-            <Link className="navbar-brand" to="/">
-              <i className="fas fa-cannabis" />
-              Elevate
-            </Link>
+          <Link className="navbar-brand" to="/">
+            <i className="fas fa-cannabis" />
+            Elevate
+          </Link>
         </nav>
       );
     }

@@ -3,7 +3,7 @@ import Card from "../Card";
 import { Link, Redirect } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
-import Nav from "../../components/Nav"
+import Nav from "../../components/Nav";
 
 class SignUp extends Component {
   state = {
@@ -35,7 +35,6 @@ class SignUp extends Component {
   }
 
   handleSubmit(event) {
-
     event.preventDefault();
     API.createNewUser({
       name: this.state.name,
@@ -44,19 +43,20 @@ class SignUp extends Component {
       address: this.state.address,
       account_type: this.state.account
     })
-      .then((response) => {
+      .then(response => {
         this.setState({
           redirect: true
-        })
+        });
       })
       .catch(function(error) {
         console.log(error);
       });
   }
+  //TODO: FIXME:not sure why when u signup and itredirects u to the login in page, it displays 2 login form not sure if thats a problem on your end or not
   render() {
     // redirecting page on submit click
     if (this.state.redirect) {
-      return <Redirect to={{ pathname: "/login" }} />;
+      return <Redirect to={{ pathname: "/" }} />;
     } else {
       return (
         <div>
@@ -130,13 +130,13 @@ class SignUp extends Component {
                           type="submit"
                           value="Submit"
                           className="btn float-right login_btn m-1"
-                          to="/login"
+                          to="/"
                         />
                         <Link
                           type="button"
                           value="Login"
                           className="btn float-right login_btn m-1"
-                          to="/Login"
+                          to="/"
                         >
                           Login
                         </Link>

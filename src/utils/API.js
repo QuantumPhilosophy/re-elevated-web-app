@@ -3,8 +3,7 @@ import axios from "axios";
 const url = "http://localhost:3030";
 
 export default {
-  
-// =================
+  // =================
   // What is this part?
   // if user wants to update image
   uploadImage: image => {
@@ -18,21 +17,19 @@ export default {
   getReviewOnMerchant: custyReview => {
     return axios.get(`${url}/merchantreviews/{merchant_id}`, custyReview);
   },
-// ====================
+  // ====================
 
   getGrowers: () => {
-    return axios.get(`${url}/growers/`)
+    return axios.get(`${url}/growers/`);
   },
 
-  getMerchantReviews: (id) => {
-    
+  getMerchantReviews: id => {
     return axios.get(`${url}/merchant/merchantreviews/${id}`);
   },
-  
-  getGrowerReviews: (id) => {
+
+  getGrowerReviews: id => {
     return axios.get(`${url}/merchant/growerreviews/${id}`);
   },
-
 
   // one route for all signup
   createNewUser: userObj => {
@@ -48,6 +45,20 @@ export default {
     });
   },
 
+  // if user wants to update image
+  uploadImage: image => {
+    return axios.post({});
+  },
+  // Merchant adding growers review (post)
+  merchantPostReview: data => {
+    return axios.post(`${url}/growerreviews/add/${data.merchant_id}`, {
+      merchant_id: data.merchant_id,
+      grower_id: data.grower_id,
+      grower_review: data.grower_review,
+      grower_rating: data.grower_rating
+    });
+  },
+
   // one route for all login
   login: user => {
     // console.log("API.js login call triggered");
@@ -56,5 +67,5 @@ export default {
       password: user.password,
       type: user.account_type
     });
-  },
+  }
 };

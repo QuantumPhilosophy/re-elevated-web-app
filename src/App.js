@@ -8,23 +8,23 @@ import Merchant from "./pages/Merchant";
 import Login from "./pages/Login";
 import Reviews from "./pages/Reviews";
 import Grower from "./pages/Grower";
-import Ads from "./pages/AdInfo";
+import Ads from "./pages/Ads";
 import View from "./pages/View";
 import ImageUpload from "./pages/UploadImageForm";
+// import ViewGrowers from "./pages/ViewGrower";
 import "./App.css";
 
 function App() {
   return (
     <Router>
       <div className="App">
-      
         <div>
           <switch>
             <Route exact path="/" component={Login} />
             <Route exact path="/login" component={Login} />
-            
+
             <Route exact path="/signup" component={SignUp} />
-            
+
             <Route exact path="/merchant" component={Merchant} />
             <Route exact path="/merchant/reviews" component={Reviews} />
             {/* ads will have a sections to add new ads and view all ads */}

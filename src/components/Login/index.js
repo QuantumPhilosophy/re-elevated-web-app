@@ -34,22 +34,23 @@ class Login extends Component {
 
   submitResponse = event => {
     event.preventDefault();
+
     console.log("You pressed SubmitBTN");
     API.login({
       username: this.state.username,
       password: this.state.password,
       account_type: this.state.account_type
     })
-      .then((response) => {
+      .then(response => {
         // here is where you would redirect after successful login
         console.log("Working", response.data);
-        response.data.account_type = this.state.account_type
+        response.data.account_type = this.state.account_type;
         this.setState({
           redirect: true,
           userInfo: response.data
-        })
+        });
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log("NOT WORKING", error);
       });
   };
@@ -69,21 +70,26 @@ class Login extends Component {
   render() {
     if (this.state.redirect && this.state.account_type === "merchant") {
       return (
-        <Redirect 
-        to={{ 
-          pathname: "/merchant",
-          state: {
-            userInfo: this.state.userInfo 
-          }
-        }} />);
+        <Redirect
+          to={{
+            pathname: "/merchant",
+            state: {
+              userInfo: this.state.userInfo
+            }
+          }}
+        />
+      );
     } else if (this.state.redirect && this.state.account_type === "grower") {
-      return <Redirect 
-        to={{ 
-          pathname: "/grower",
-          state: { 
-            userInfo: this.state.userInfo 
-          }
-        }} />;
+      return (
+        <Redirect
+          to={{
+            pathname: "/grower",
+            state: {
+              userInfo: this.state.userInfo
+            }
+          }}
+        />
+      );
     }
     return (
       <div>
@@ -105,7 +111,7 @@ class Login extends Component {
                     </span>
                   </div>
                 </div>
-                <form > 
+                <form>
                   {/* this goes above in form tag if needed onSubmit={this.handleSubmit} */}
                   <div>
                     <select
@@ -183,4 +189,14 @@ class Login extends Component {
     );
   }
 }
+
 export default Login;
+//=======================//
+{
+  /* <input
+type="button"
+value={this.state.loggedIn ? "logout" : "login"}
+className="btn float-right login_btn"
+onClick={this.submitResponse.bind(this)}
+/> */
+}

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import Card from "../Card";
 import { storage } from "../firebase";
 import API from "../../utils/API";
-
-class ImageUpload extends Component {
+class Ad extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,12 +13,12 @@ class ImageUpload extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
   }
-
-  // componentDidMount () {
-  //   API.getUser().then(function (res) {
-  //     console.log(res)
-  //   })
-  // }
+  //TODO: i was not sure what this API was used for but it prevented me from loading the page, need to grab the saved ads from firebase and display them if possible
+  //   componentDidMount () {
+  //     API.getUser().then(function (res) {
+  //       console.log(res)
+  //     })
+  //   }
 
   handleChange = e => {
     if (e.target.files[0]) {
@@ -55,7 +55,6 @@ class ImageUpload extends Component {
       }
     );
   };
-
   render() {
     const style = {
       height: "100vh",
@@ -65,22 +64,22 @@ class ImageUpload extends Component {
       justifyContent: "center"
     };
     return (
-      <div style={style} imgurl={this.state.url}>
-        <progress value={this.state.progress} max="100" />
-        <br />
-        <input type="file" onChange={this.handleChange} />
-        <button onClick={this.handleUpload}>Upload</button>
-        <br />
-        <img
-          userupload={this.state.url || "http://via.placeholder.com/300x300"}
-          alt="Uploaded images"
-          height="300"
-          width="300"
-        />
-      </div>
-      // const UserUpload = this.state.url
+      <Card>
+        <div style={style} imgurl={this.state.url}>
+          <progress value={this.state.progress} max="100" />
+          <br />
+          <input type="file" onChange={this.handleChange} />
+          <button onClick={this.handleUpload}>Upload</button>
+          <br />
+          <img
+            userupload={this.state.url || "http://via.placeholder.com/300x300"}
+            alt="Uploaded images"
+            height="300"
+            width="600"
+          />
+        </div>
+      </Card>
     );
   }
 }
-
-export default ImageUpload;
+export default Ad;
