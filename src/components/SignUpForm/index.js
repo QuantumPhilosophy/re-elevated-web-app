@@ -46,16 +46,17 @@ class SignUp extends Component {
       .then(response => {
         this.setState({
           redirect: true
-        })
+        });
       })
       .catch(function(error) {
         console.log(error);
       });
   }
+  //TODO: FIXME:not sure why when u signup and itredirects u to the login in page, it displays 2 login form not sure if thats a problem on your end or not
   render() {
     // redirecting page on submit click
     if (this.state.redirect) {
-      return <Redirect to={{ pathname: "/login" }} />;
+      return <Redirect to={{ pathname: "/" }} />;
     } else {
       return (
         <div>
@@ -129,13 +130,13 @@ class SignUp extends Component {
                           type="submit"
                           value="Submit"
                           className="btn float-right login_btn m-1"
-                          to="/login"
+                          to="/"
                         />
                         <Link
                           type="button"
                           value="Login"
                           className="btn float-right login_btn m-1"
-                          to="/Login"
+                          to="/"
                         >
                           Login
                         </Link>

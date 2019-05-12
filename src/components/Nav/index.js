@@ -42,6 +42,7 @@ class Nav extends Component {
     window.removeEventListener("resize", this.updateWidth);
   }
   render() {
+    // TODO: The Nav is not rendering correctly, because this.props.account_type is undefined and it prevents the nav links from rendering
     console.log("this is a ", this.props.account_type);
     if (this.props.account_type === "merchant") {
       return (

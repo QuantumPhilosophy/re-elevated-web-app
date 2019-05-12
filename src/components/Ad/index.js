@@ -1,14 +1,85 @@
 import React, { Component } from "react";
-import Card from "../Card"
-
+import Card from "../Card";
+import { storage } from "../firebase";
+import API from "../../utils/API";
 class Ad extends Component {
-    render() {
-        return (
-            <Card>
-                <div >
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: null,
+      url: "",
+      progress: 0
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
+  }
+  //TODO: i was not sure what this API was used for but it prevented me from loading the page, need to grab the saved ads from firebase and display them if possible
+  //   componentDidMount () {
+  //     API.getUser().then(function (res) {
+  //       console.log(res)
+  //     })
+  //   }
 
-                </div>{}</Card>
-        )
+  handleChange = e => {
+    if (e.target.files[0]) {
+      const image = e.target.files[0];
+      this.setState(() => ({ image }));
     }
+  };
+  handleUpload = () => {
+    const { image } = this.state;
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        // progrss function ....
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        this.setState({ progress });
+      },
+      error => {
+        // error function ....
+        console.log(error);
+      },
+      () => {
+        // complete function ....
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then(url => {
+            console.log(url);
+            this.setState({ url });
+          });
+      }
+    );
+  };
+  render() {
+    const style = {
+      height: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center"
+    };
+    return (
+      <Card>
+        <div style={style} imgurl={this.state.url}>
+          <progress value={this.state.progress} max="100" />
+          <br />
+          <input type="file" onChange={this.handleChange} />
+          <button onClick={this.handleUpload}>Upload</button>
+          <br />
+          <img
+            userupload={this.state.url || "http://via.placeholder.com/300x300"}
+            alt="Uploaded images"
+            height="300"
+            width="600"
+          />
+        </div>
+      </Card>
+    );
+  }
 }
 export default Ad;

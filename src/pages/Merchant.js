@@ -48,6 +48,7 @@ class Merchant extends Component {
       });
     });
 
+    //TODO:I am not sure if the code below is working or not because my array was empty for the results.data so I couldnt reference the key for its value from our database. But for sure this code will render 3 cards and spit out random indexes
     // grab a couple most recent reviews about the merchant
     API.getMerchantReviews(this.state.merchant_id).then(results => {
       // results is a list of reviews about the merchant
@@ -64,7 +65,7 @@ class Merchant extends Component {
         randomMerchReview: reviews
       });
     });
-
+    //TODO:I am not sure if the code below is working or not because my array was empty for the results.data so I couldnt reference the key for its value from our database. But for sure this code will render 3 cards and spit out random indexes
     // grab a couple most recent added reviews about grower
     API.getGrowerReviews(this.state.merchant_id).then(results => {
       console.log("grower reviews", results.data);
@@ -84,6 +85,7 @@ class Merchant extends Component {
     });
   }
 
+  //this function generate 3 random grower displaying name and email
   callGrowerdb = () => {
     API.getGrowers().then(res => {
       console.log("data for render", res.data.length);
@@ -101,7 +103,9 @@ class Merchant extends Component {
       });
     });
   };
-
+  //this on click passes the id to the ../components/Grower/index.js
+  //TODO: I was thinking by passing the user id in this case the grower's id that we would use that to grab display their info when clicking on the individual row?
+  //TODO: if you go to localhost//:3030/merchant/viewgrowers when u click on the grower it console logs its id, I wasnt sure how I could grab their rating, reviews etc.
   handleOnClick = id => {
     console.log("id", id);
   };
@@ -129,6 +133,10 @@ class Merchant extends Component {
         </div>
         <Row>
           <Col size="md-6">
+            {/* //TODO: FIXME: //I was not able to get the info for these maybe
+            because I didn't have any data in the database, but essentially this
+            will render 3 random cards about the grower reviews//
+            //============================================================// */}
             {/* <div>
               {this.state.randomGrowerReview.map(review => (
                 <GrowerReview
@@ -138,8 +146,14 @@ class Merchant extends Component {
                 />
               ))}
             </div> */}
+            {/* //============================================================// */}
           </Col>
           <Col size="md-6">
+            {/* //TODO: FIXME: //I had the same problem here and was not able to get
+            the info for these maybe because I didn't have any data in the
+            database, but essentially this will render 3 random cards about the
+            merchant reviews//
+            //============================================================// */}
             {/* <div>
               {this.state.randomMerchReview.map(review => (
                 <MerchantReview
@@ -150,6 +164,7 @@ class Merchant extends Component {
                 />
               ))}
             </div> */}
+            {/* //============================================================// */}
           </Col>
         </Row>
         <Review

@@ -8,7 +8,7 @@ import Merchant from "./pages/Merchant";
 import Login from "./pages/Login";
 import Reviews from "./pages/Reviews";
 import Grower from "./pages/Grower";
-import Ads from "./pages/AdInfo";
+import Ads from "./pages/Ads";
 import View from "./pages/View";
 import ImageUpload from "./pages/UploadImageForm";
 // import ViewGrowers from "./pages/ViewGrower";
