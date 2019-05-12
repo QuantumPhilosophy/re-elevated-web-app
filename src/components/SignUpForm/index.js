@@ -22,26 +22,6 @@ class SignUp extends Component {
     });
   };
 
-<<<<<<< HEAD
-  axiosPost = () => {
-    API.createNewUser({
-      name: this.state.name,
-      password: this.state.password,
-      email: this.state.email,
-      address: this.state.address,
-      account_type: this.state.account
-    })
-      .then(function(response) {
-        // this is where redirects happen after signing up
-        console.log("You have successfully logged in");
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
-=======
->>>>>>> e409b427fd62f7290a7400bd8f6ed52b31e76d00
   constructor(props) {
     super(props);
     this.state = { value: "" };

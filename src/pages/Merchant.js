@@ -1,5 +1,5 @@
 import Review from "../components/ReviewBox";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import React, { Component } from "react";
 import GrowerInfo from "../components/Grower";
 import { List } from "../components/List";
@@ -45,7 +45,7 @@ class Merchant extends Component {
     API.getGrowers().then(results => {
       console.log("growers list", results.data);
       this.setState({
-        growerList: results.data
+        
       });
     });
 
@@ -98,6 +98,7 @@ class Merchant extends Component {
       }
 
       this.setState({
+        growerList: res.data,
         GrowerInfo: grower,
         randomThree: growers
       });
@@ -107,20 +108,20 @@ class Merchant extends Component {
   //TODO: I was thinking by passing the user id in this case the grower's id that we would use that to grab display their info when clicking on the individual row?
   //TODO: if you go to localhost//:3030/merchant/viewgrowers when u click on the grower it console logs its id, I wasnt sure how I could grab their rating, reviews etc.
   handleOnClick = id => {
-    console.log("id", id);
+    return (
+    <Redirect to={{
+      pathname: "/merchant",
+      state: {
+        userInfo: this.state.userInfo
+      }
+    }}/>
+    )
   };
 
   render() {
     return (
       <div>
         <Nav />
-        <p>
-          user_name {this.props.location.state.userInfo.merchant_name}
-          <br />
-          user_email {this.props.location.state.userInfo.merchant_email}
-          <br />
-          user_password {this.props.location.state.userInfo.merchant_password}
-        </p>
         <div className="wrapper">
           {this.state.randomThree.map(grower => (
             <GrowerInfo
