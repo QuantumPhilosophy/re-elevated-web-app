@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "https://elevated-shadow-api.herokuapp.com";
+const url = "https://cors-anywhere.herokuapp.com/https://elevated-shadow-api.herokuapp.com";
 
 export default {
   // =================
