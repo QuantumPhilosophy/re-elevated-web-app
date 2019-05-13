@@ -18,9 +18,16 @@ export default {
     return axios.get(`${url}/merchantreviews/{merchant_id}`, custyReview);
   },
   // ====================
+  getUser: (id) => {
+    return axios.get(`${url}/users/${id}`)
+  },
 
   getGrowers: () => {
     return axios.get(`${url}/growers/`);
+  },
+
+  getGrower: (id) => {
+    return axios.get(`${url}/growers/${id}`);
   },
 
   getMerchantReviews: id => {
@@ -40,32 +47,18 @@ export default {
       password: userObj.password,
       location: userObj.address,
       dob: userObj.dob,
-      account_type: userObj.account_type,
+      account_type: userObj.accountType,
       img: userObj.img
-    });
-  },
-
-  // if user wants to update image
-  uploadImage: image => {
-    return axios.post({});
-  },
-  // Merchant adding growers review (post)
-  merchantPostReview: data => {
-    return axios.post(`${url}/growerreviews/add/${data.merchant_id}`, {
-      merchant_id: data.merchant_id,
-      grower_id: data.grower_id,
-      grower_review: data.grower_review,
-      grower_rating: data.grower_rating
     });
   },
 
   // one route for all login
   login: user => {
-    // console.log("API.js login call triggered");
+    console.log("API.js login call triggered");
     return axios.post(`${url}/auth/login`, {
       username: user.username,
       password: user.password,
-      type: user.account_type
+      type: user.accountType
     });
   }
 };

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Card from "../Card";
 import { storage } from "../firebase";
-import API from "../../utils/API";
 class Ad extends Component {
   constructor(props) {
     super(props);
