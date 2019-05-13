@@ -4,3 +4,17 @@ input.form-control.inputBox {
   border: 2px;
   border-radius: 5px;
 }
+.box-container {
+  background-color: rgba(218, 209, 209, 0.76);
+  width: 70%;
+  margin: auto;
+}
+
+.input-group-append {
+  display: flex;
+  justify-content: center;
+}
+
+DropdownToggle {
+  background-color: rgb(55,42,16,0.76);
+}

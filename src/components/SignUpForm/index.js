@@ -41,7 +41,7 @@ class SignUp extends Component {
       password: this.state.password,
       email: this.state.email,
       address: this.state.address,
-      account_type: this.state.account
+      accountType: this.state.account
     })
       .then(response => {
         this.setState({

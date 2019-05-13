@@ -35,6 +35,7 @@ class Nav extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props);
     window.addEventListener("resize", this.updateWidth);
   }
 
@@ -43,10 +44,9 @@ class Nav extends Component {
   }
   render() {
     // TODO: The Nav is not rendering correctly, because this.props.account_type is undefined and it prevents the nav links from rendering
-    console.log("this is a ", this.props.account_type);
-    if (this.props.account_type === "merchant") {
+    if (this.props.accountType === "merchant") {
       return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
           <Link className="navbar-brand" to="/">
             <i className="fas fa-cannabis" />
             Elevate
@@ -67,6 +67,25 @@ class Nav extends Component {
             id="navbarNav"
           >
             <ul className="navbar-nav">
+            <li className="nav-item">
+                <Link
+                  onClick={this.toggleNav}
+                  className={
+                    window.location.pathname === "/merchant"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                  to={{
+                    pathname: "/merchant",
+                    state: {
+                      userInfo: this.props.userInfo,
+                      accountType: this.props.accountType
+                    }
+                  }}
+                >
+                  Summary
+                </Link>
+              </li>
               <li className="nav-item">
                 <Link
                   onClick={this.toggleNav}
@@ -75,7 +94,14 @@ class Nav extends Component {
                       ? "nav-link active"
                       : "nav-link"
                   }
-                  to="/merchant/viewgrowers"
+                  to={{
+                    pathname: "/merchant/viewgrowers",
+                    state: {
+                      userInfo: this.props.userInfo,
+                      accountType: this.props.accountType
+                    }
+                  }}
+                  // id = {this.props.id}
                 >
                   View Growers
                 </Link>
@@ -88,7 +114,14 @@ class Nav extends Component {
                       ? "nav-link active"
                       : "nav-link"
                   }
-                  to="/merchant/reviews"
+                  to={{
+                    pathname: "/merchant/reviews",
+                    state: {
+                      userInfo: this.props.userInfo, 
+                      accountType: this.props.accountType
+                    }
+                  }}
+                  // id = {this.props.id}
                 >
                   View Reviews
                 </Link>
@@ -101,7 +134,13 @@ class Nav extends Component {
                       ? "nav-link active"
                       : "nav-link"
                   }
-                  to="/merchant/ads"
+                  to={{
+                    pathname: "/merchant/ads",
+                    state: {
+                      userInfo: this.props.userInfo,
+                      accountType: this.props.accountType
+                    }
+                  }}
                 >
                   Manage Ads
                 </Link>
@@ -114,25 +153,25 @@ class Nav extends Component {
                       ? "nav-link active"
                       : "nav-link"
                   }
-                  to="/signup"
+                  to="/"
                 >
-                  Sign Up
+                  Log Out
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Search
                   handleInputChange={this.handleInputChange}
                   handleFormSubmit={this.handleFormSubmit}
                   q={this.state.q}
                 />
-              </li>
+              </li> */}
             </ul>
           </div>
         </nav>
       );
-    } else if (this.props.account_type === "grower") {
+    } else if (this.props.accountType === "grower") {
       return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
           <Link className="navbar-brand" to="/">
             <i className="fas fa-cannabis" />
             Elevate
@@ -208,7 +247,7 @@ class Nav extends Component {
       );
     } else {
       return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
           <Link className="navbar-brand" to="/">
             <i className="fas fa-cannabis" />
             Elevate

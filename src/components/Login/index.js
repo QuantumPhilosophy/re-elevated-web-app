@@ -9,7 +9,7 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
-    account_type: "",
+    accountType: "",
     checked: false,
     redirect: false,
     userInfo: {}
@@ -34,62 +34,56 @@ class Login extends Component {
 
   submitResponse = event => {
     event.preventDefault();
-
     console.log("You pressed SubmitBTN");
     API.login({
       username: this.state.username,
       password: this.state.password,
-      account_type: this.state.account_type
+      accountType: this.state.accountType
     })
-      .then(response => {
+      .then((response) => {
         // here is where you would redirect after successful login
         console.log("Working", response.data);
-        response.data.account_type = this.state.account_type;
+        response.data.accountType = this.state.accountType
         this.setState({
           redirect: true,
           userInfo: response.data
-        });
+        })
       })
-      .catch(error => {
+      .catch(function(error) {
         console.log("NOT WORKING", error);
       });
   };
 
   constructor(props) {
     super(props);
-    this.state = { account_type: "" };
+    this.state = { accountType: "" };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ account_type: event.target.value });
+    this.setState({ accountType: event.target.value });
   }
 
   render() {
-    if (this.state.redirect && this.state.account_type === "merchant") {
+    if (this.state.redirect && this.state.accountType === "merchant") {
       return (
-        <Redirect
-          to={{
-            pathname: "/merchant",
-            state: {
-              userInfo: this.state.userInfo
-            }
-          }}
-        />
-      );
-    } else if (this.state.redirect && this.state.account_type === "grower") {
-      return (
-        <Redirect
-          to={{
-            pathname: "/grower",
-            state: {
-              userInfo: this.state.userInfo
-            }
-          }}
-        />
-      );
+        <Redirect 
+        to={{ 
+          pathname: "/merchant",
+          state: {
+            userInfo: this.state.userInfo 
+          }
+        }} />);
+    } else if (this.state.redirect && this.state.accountType === "grower") {
+      return <Redirect 
+        to={{ 
+          pathname: "/grower",
+          state: { 
+            userInfo: this.state.userInfo 
+          }
+        }} />;
     }
     return (
       <div>
@@ -111,11 +105,11 @@ class Login extends Component {
                     </span>
                   </div>
                 </div>
-                <form>
+                <form > 
                   {/* this goes above in form tag if needed onSubmit={this.handleSubmit} */}
                   <div>
                     <select
-                      value={this.state.account_type}
+                      value={this.state.accountType}
                       onChange={this.handleChange}
                       placeholder="You Are A"
                     >
@@ -189,14 +183,4 @@ class Login extends Component {
     );
   }
 }
-
 export default Login;
-//=======================//
-{
-  /* <input
-type="button"
-value={this.state.loggedIn ? "logout" : "login"}
-className="btn float-right login_btn"
-onClick={this.submitResponse.bind(this)}
-/> */
-}
