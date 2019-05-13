@@ -17,6 +17,10 @@ export default {
   getReviewOnMerchant: custyReview => {
     return axios.get(`${url}/merchantreviews/{merchant_id}`, custyReview);
   },
+
+  getMerchants: () => {
+    return axios.get(`${url}/merchants`);
+  },
   // ====================
 
   getGrowers: () => {
@@ -30,7 +34,12 @@ export default {
   getGrowerReviews: id => {
     return axios.get(`${url}/merchant/growerreviews/${id}`);
   },
-
+  getReviewsOnGrower: id => {
+    return axios.get(`${url}/grower/growerreviews/${id}`);
+  },
+  getGrowerMenu: id => {
+    return axios.get(`${url}/growermenu/${id}`);
+  },
   // one route for all signup
   createNewUser: userObj => {
     return axios.post(`${url}/auth/signup`, {
