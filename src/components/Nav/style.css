@@ -1,0 +1,11 @@
+.nav-search {
+  max-width: 300px;
+  margin-left: 100px;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+.social_icon {
+  visibility: hidden;
+}
