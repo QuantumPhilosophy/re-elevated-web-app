@@ -91,6 +91,7 @@ class Merchant extends Component {
         GrowerInfo: grower,
         randomThree: growers
       });
+      
     });
   };
   //this on click passes the id to the ../components/Grower/index.js
@@ -154,6 +155,7 @@ class Merchant extends Component {
             <div>
               {this.state.randomMerchReview.map(review => (
                 <MerchantReview
+                  merchant_name={review.merchant_name}
                   merchantId={this.state.userInfo.id}
                   merchant_rating={review.merchant_rating}
                   merchant_review={review.merchant_review}

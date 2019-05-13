@@ -21,6 +21,10 @@ export default {
   getUser: (id) => {
     return axios.get(`${url}/users/${id}`)
   },
+  
+  getMerchant: (id) => {
+    return axios.get(`${url}/merchants/${id}`)
+  },
 
   getGrowers: () => {
     return axios.get(`${url}/growers/`);

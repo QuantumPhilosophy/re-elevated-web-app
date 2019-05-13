@@ -9,7 +9,8 @@ class MerchantReview extends Component {
     merchantId: this.props.merchantId,
     userId: this.props.userId,
     merchant_review: this.props.merchant_review,
-    merchant_rating: this.props.merchanr_rating,
+    merchant_rating: this.props.merchant_rating,
+    merchant_name: this.props.merchant_name,
     userName: ""
   };
 
@@ -20,8 +21,13 @@ class MerchantReview extends Component {
         userName : results.data.user_name
       })
     })
+    API.getMerchant(this.state.merchantId).then(results => {
+      console.log("merchant", results)
+      this.setState({
+        merchant_name : results.data[0].merchant_name
+      })
+    })
   }
-
 
   render() {
     return (
@@ -29,13 +35,13 @@ class MerchantReview extends Component {
         <ListItem className="customColor">
           <Row className="flex-wrap-reverse">
             <Col size="md-12">
-              <h2>Customer:{this.state.userName}</h2>
-              <h4 className="font-italic">Merchant ID: {this.state.merchantId}</h4>
+              <h2>Customer : {this.state.userName}</h2>
+              <h4 className="font-italic">Merchant: {this.state.merchant_name}</h4>
             </Col>
           </Row>
           <Row className="flex-wrap-reverse">
             <Col size="md-12">
-              <p>Rating: {this.state.merchant_rating}</p>
+              <p>Rating   {this.state.merchant_rating}</p>
               <p>
                 {this.state.merchant_review}
               </p>
