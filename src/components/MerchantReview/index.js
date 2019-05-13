@@ -1,34 +1,55 @@
-import React from "react";
+import React, { Component } from "react";
 import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
+import API from "../../utils/API";
 import "./style.css";
 
-function MerchantReview({
-  user_name,
-  user_id,
-  merchant_id,
-  merchant_review,
-  merchant_rating
-}) {
-  return (
-    <div className="row-width">
-      <ListItem>
-        <Row className="flex-wrap-reverse">
-          <Col size="md-8">
-            <h2>Custy:{user_name}</h2>
-            <h4 className="font-italic">Merchant ID: {merchant_id}</h4>
-          </Col>
-        </Row>
-        <Row className="flex-wrap-reverse">
-          <Col size="md-8">
-            <p>Rating: {merchant_rating}</p>
-            <p>
-              {user_id} said that {merchant_review}
-            </p>
-          </Col>
-        </Row>
-      </ListItem>
-    </div>
-  );
+class MerchantReview extends Component {
+  state = { 
+    merchantId: this.props.merchantId,
+    userId: this.props.userId,
+    merchant_review: this.props.merchant_review,
+    merchant_rating: this.props.merchant_rating,
+    merchant_name: this.props.merchant_name,
+    userName: ""
+  };
+
+  componentDidMount () {
+    // Get the username
+    API.getUser(this.state.userId).then(results => {
+      this.setState({
+        userName : results.data.user_name
+      })
+    })
+    API.getMerchant(this.state.merchantId).then(results => {
+      console.log("merchant", results)
+      this.setState({
+        merchant_name : results.data[0].merchant_name
+      })
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <ListItem className="customColor">
+          <Row className="flex-wrap-reverse">
+            <Col size="md-12">
+              <h2>Customer : {this.state.userName}</h2>
+              <h4 className="font-italic">Merchant: {this.state.merchant_name}</h4>
+            </Col>
+          </Row>
+          <Row className="flex-wrap-reverse">
+            <Col size="md-12">
+              <p>Rating   {this.state.merchant_rating}</p>
+              <p>
+                {this.state.merchant_review}
+              </p>
+            </Col>
+          </Row>
+        </ListItem>
+      </div>
+    );
+  }
 }
 export default MerchantReview;

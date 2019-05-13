@@ -1,7 +1,8 @@
 .grower-container {
-  text-align: left;
-  width: 95%;
+  width: 60vw;
   margin: auto;
+  margin-top: 10px;
+  cursor: pointer;
   /* display: flex;
   justify-content: center; */
 }

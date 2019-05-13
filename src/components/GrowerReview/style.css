@@ -1,4 +1,9 @@
 .row-width {
   width: 40%;
   margin: 10px;
+  color: black;
+}
+
+div p {
+  color: white;
 }

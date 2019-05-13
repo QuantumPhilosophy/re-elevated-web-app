@@ -6,3 +6,6 @@
   display: flex;
   justify-content: space-between;
 }
+.social_icon {
+  visibility: hidden;
+}

@@ -5,8 +5,11 @@ body {
   background-image: url("http://static1.squarespace.com/static/58a487863e00be228444a0de/58a49a8c9de4bb115e65e2b9/58c84c1c59cc68abee760a8b/1490277641120/organic.jpg?format=1500w");
   background-size: cover;
   background-repeat: no-repeat;
+  position: fixed;
   height: 100%;
+  width: 100%;
   font-family: "Numans", sans-serif;
+  overflow: auto;
 }
 
 .container {
@@ -19,7 +22,7 @@ body {
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
-  background-color: rgba(189, 178, 178, 0.5) !important;
+  background-color: rgba(218, 209, 209, 0.76) !important;
 }
 
 .social_icon span {
@@ -34,7 +37,7 @@ body {
 }
 
 .card-header h3 {
-  color: #42350d;
+  color: #3d310d;
 }
 
 .social_icon {
